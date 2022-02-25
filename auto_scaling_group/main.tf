@@ -113,7 +113,7 @@ resource "aws_cloudwatch_metric_alarm" "cwatch-metric-up" {
 }
 
 resource "aws_autoscaling_policy" "asg-policy-down" {
-  name                   = format("-", [var.environment, var.name, "policy-down"])
+  name                   = join("-", [var.environment, var.name, "policy-down"])
   adjustment_type        = "ChangeInCapacity"
   autoscaling_group_name = aws_autoscaling_group.asg.name
   policy_type            = "StepScaling"
@@ -126,7 +126,7 @@ resource "aws_autoscaling_policy" "asg-policy-down" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cwatch-metric-down" {
-  alarm_name          = format("-", [var.environment, var.name, "alarm-to-down"])
+  alarm_name          = join("-", [var.environment, var.name, "alarm-to-down"])
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "20"
   metric_name         = "CPUUtilization"
