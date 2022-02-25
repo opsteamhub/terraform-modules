@@ -22,7 +22,7 @@ resource "aws_launch_configuration" "lc" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name = join("-", ["asg", var.environment, var.name])
+  name = join("-", ["asg", var.environment, aws_launch_configuration.lc.name])
 
   launch_configuration = aws_launch_configuration.lc.name
   vpc_zone_identifier  = var.subnets
