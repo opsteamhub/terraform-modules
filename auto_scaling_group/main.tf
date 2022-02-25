@@ -34,7 +34,7 @@ resource "aws_autoscaling_group" "asg" {
 
   wait_for_capacity_timeout = 0
   wait_for_elb_capacity     = var.wait_for_elb_capacity
-  min_elb_capacity          = 2
+  min_elb_capacity          = 1
 
   health_check_grace_period = var.health_check_grace_period
   health_check_type         = var.health_check_type
