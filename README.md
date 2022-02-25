@@ -6,8 +6,8 @@
 
 ```
 module "sg" {
-  source = "github.com/opsteamhub/terraform-modules//security_group"
-  name   = var.project_name
+  source            = "github.com/opsteamhub/terraform-modules//security_group"
+  name              = var.project_name
   environment       = var.environment
 }
 
@@ -45,13 +45,13 @@ module "rule_egress" {
 }
 
 module "lb" {
-  source         = "github.com/opsteamhub/terraform-modules//application_loadbalancer"
-  name           = var.project_name
-  lb_type        = "application"
-  security_group = module.sg.id
-  subnets        = ["subnet-f0cf5294", "subnet-c361379a"]
-  environment    = var.environment
-  vpc_id         = var.vpc_id
+  source            = "github.com/opsteamhub/terraform-modules//application_loadbalancer"
+  name              = var.project_name
+  lb_type           = "application"
+  security_group    = module.sg.id
+  subnets           = ["subnet-f0cf5294", "subnet-c361379a"]
+  environment       = var.environment
+  vpc_id            = var.vpc_id
 
 }
 
@@ -64,12 +64,12 @@ module "lb_listener" {
 }
 
 module "target_group" {
-  source   = "github.com/opsteamhub/terraform-modules//target_group"
-  name     = var.project_name
+  source            = "github.com/opsteamhub/terraform-modules//target_group"
+  name              = var.project_name
   environment       = var.environment
-  vpc_id   = var.vpc_id
-  protocol = "HTTP"
-  port     = "80"
+  vpc_id            = var.vpc_id
+  protocol          = "HTTP"
+  port              = "80"
 }
 
 module "autoscaling" {
@@ -104,11 +104,11 @@ variable "image_id" {}
 ###### Arquivo .tfvars
 
 ```
-project_name    = "project_name"
-vpc_id          = "vpc-xxxxxx"
-subnets         = ["subnet-xxxxxx", "subnet-xxxxx"]
-environment     = "environment"
-key_name        = "key_name"
-instance_type   = "t3.micro"
-image_id        = "ami-xxxxxxxxxxxx
+project_name        = "project_name"
+vpc_id              = "vpc-xxxxxx"
+subnets             = ["subnet-xxxxxx", "subnet-xxxxx"]
+environment         = "environment"
+key_name            = "key_name"
+instance_type       = "t3.micro"
+image_id            = "ami-xxxxxxxxxxxx
 ```
