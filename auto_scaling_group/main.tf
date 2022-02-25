@@ -97,7 +97,7 @@ resource "aws_autoscaling_policy" "asg-policy-up" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cwatch-metric-up" {
-  alarm_name          = join("-", [var.environment, var.name, "alarm-to-up")
+  alarm_name          = join("-", [var.environment, var.name, "alarm-to-up"])
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
