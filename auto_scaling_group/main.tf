@@ -50,7 +50,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = join("-",[var.environment, var.name])
+    value               = join("-", [var.environment, var.name])
     propagate_at_launch = true
   }
 
