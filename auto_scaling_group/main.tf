@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "asg" {
   min_size         = var.min_size
   default_cooldown = 180
 
-  wait_for_capacity_timeout = 0
+  wait_for_capacity_timeout = "10"
   wait_for_elb_capacity     = var.wait_for_elb_capacity
   min_elb_capacity          = 1
 
