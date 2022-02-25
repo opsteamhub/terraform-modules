@@ -25,15 +25,15 @@ variable "volume_size" {
 variable "security_group" {}
 
 variable "max_size" {
-  default = 3
-}
-
-variable "min_size" {
   default = 2
 }
 
+variable "min_size" {
+  default = 1
+}
+
 variable "desired_capacity" {
-  default = "2"
+  default = 1
 }
 
 variable "wait_for_elb_capacity" {
