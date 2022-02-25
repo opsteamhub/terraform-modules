@@ -13,3 +13,7 @@ variable "environment" {}
 variable "provisioned" {
   default = "Terraform"
 }
+
+variable "path" {
+  default = ""  
+}
