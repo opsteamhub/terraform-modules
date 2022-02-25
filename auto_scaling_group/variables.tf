@@ -65,3 +65,7 @@ variable "loadbalancer" {
 variable "common_tags" {
   default = ""
 }
+
+variable "provisioned" {
+  default = "Terraform"
+}
