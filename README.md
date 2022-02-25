@@ -103,6 +103,7 @@ variable "image_id" {}
 
 ###### Arquivo .tfvars
 
+```
 project_name    = "project_name"
 vpc_id          = "vpc-xxxxxx"
 subnets         = ["subnet-xxxxxx", "subnet-xxxxx"]
@@ -110,3 +111,4 @@ environment     = "environment"
 key_name        = "key_name"
 instance_type   = "t3.micro"
 image_id        = "ami-xxxxxxxxxxxx
+```
