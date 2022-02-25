@@ -1,6 +1,6 @@
 
 resource "aws_launch_configuration" "lc" {
-  name_prefix          = format("lc-%s-", var.environment, var.name)
+  name_prefix          = join("-", ["lc", var.environment, var.name])
   image_id             = var.image_id
   iam_instance_profile = var.iam_instance_profile
 
@@ -76,7 +76,7 @@ resource "aws_autoscaling_group" "asg" {
 }
 
 resource "aws_autoscaling_policy" "asg-policy-up" {
-  name                      = format("%s-policy-up", var.environment, var.name)
+  name                      = join("-", [var.environment, var.name, "policy-up"])
   adjustment_type           = "ChangeInCapacity"
   autoscaling_group_name    = aws_autoscaling_group.asg.name
   estimated_instance_warmup = 180
@@ -97,7 +97,7 @@ resource "aws_autoscaling_policy" "asg-policy-up" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cwatch-metric-up" {
-  alarm_name          = format("%s-alarm-to-up", var.environment, var.name)
+  alarm_name          = join("-", [var.environment, var.name, "alarm-to-up")
   comparison_operator = "GreaterThanOrEqualToThreshold"
   evaluation_periods  = "2"
   metric_name         = "CPUUtilization"
@@ -113,7 +113,7 @@ resource "aws_cloudwatch_metric_alarm" "cwatch-metric-up" {
 }
 
 resource "aws_autoscaling_policy" "asg-policy-down" {
-  name                   = format("%s-policy-down", var.environment, var.name)
+  name                   = format("-", [var.environment, var.name, "policy-down"])
   adjustment_type        = "ChangeInCapacity"
   autoscaling_group_name = aws_autoscaling_group.asg.name
   policy_type            = "StepScaling"
@@ -126,7 +126,7 @@ resource "aws_autoscaling_policy" "asg-policy-down" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "cwatch-metric-down" {
-  alarm_name          = format("%s-alarm-to-down", var.environment, var.name)
+  alarm_name          = format("-", [var.environment, var.name, "alarm-to-down"])
   comparison_operator = "LessThanOrEqualToThreshold"
   evaluation_periods  = "20"
   metric_name         = "CPUUtilization"
