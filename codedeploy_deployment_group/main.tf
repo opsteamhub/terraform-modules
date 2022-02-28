@@ -7,7 +7,7 @@ resource "aws_codedeploy_deployment_group" "codedeploy_group_stack" {
     ec2_tag_filter {
       key   = "Name"
       type  = "KEY_AND_VALUE"
-      value = join("-", [var.deployment_group_name, var.environment, var.name])
+      value = join("-", [var.environment, var.name])
     }
   }
 }
