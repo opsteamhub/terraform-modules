@@ -22,14 +22,6 @@ variable "health_check_protocol" {
   default = "HTTP"
 }
 
-variable "target_group_timeout" {
-  default = optional(string)
-}
-
-variable "target_group_interval" {
-  default = 10 
-}
-
 variable "health_check" {
   description = "Health Check configuration block."
   default     = null
