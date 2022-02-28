@@ -19,5 +19,5 @@ variable "path" {
 }
 
 variable "health_check_protocol" {
-  default = "TCP"
+  default = "HTTP"
 }
