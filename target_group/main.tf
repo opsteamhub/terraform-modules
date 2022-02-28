@@ -4,12 +4,18 @@ resource "aws_lb_target_group" "tg" {
   protocol = var.protocol
   vpc_id   = var.vpc_id
 
-  health_check {
-    port     = var.port
-    protocol = var.health_check_protocol
-    path     = var.path
-    timeout  = var.target_group_timeout
-    interval = var.target_group_interval
+
+  dynamic "health_check" {
+    for_each = var.health_check != null ? [1] : []
+    content {
+      path                = try(var.health_check.path, null)
+      timeout             = var.health_check.timeout
+      matcher             = try(var.health_check.matcher, null)
+      interval            = var.health_check.interval
+      protocol            = try(var.health_check.protocol, null)
+      healthy_threshold   = try(var.health_check.healthy_threshold, null)
+      unhealthy_threshold = try(var.health_check.unhealthy_threshold, null)
+    }
   }
 
   tags = {
