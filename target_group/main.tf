@@ -1,5 +1,6 @@
 resource "aws_lb_target_group" "tg" {
-  name_prefix     = join("-", ["tg", var.environment, var.name])
+  name     = join("-", ["tg", var.environment, var.name])
+  name_prefix     = try(substr(var.name_prefix,0,6), null)
   port     = var.port
   protocol = var.protocol
   vpc_id   = var.vpc_id
