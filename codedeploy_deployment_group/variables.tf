@@ -1,6 +1,4 @@
-variable "name" {
-    default = ""
-}
+variable "name" {}
 
 variable "app_name" {}
 
