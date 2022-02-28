@@ -1,8 +1,4 @@
-variable "name" {
-  type        = string
-  description = "Name value"
-  default     = ""
-}
+variable "name" {}
 
 variable "environment" {
   type        = string
