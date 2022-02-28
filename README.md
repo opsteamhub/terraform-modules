@@ -83,6 +83,30 @@ module "autoscaling" {
   key_name          = var.key_name
   target_group_arns = [module.target_group.arn]
 }
+
+module "codedeploy_app" {
+  source      = "github.com/opsteamhub/terraform-modules//codedeploy_application"
+  name        = var.project_name
+  environment = var.environment
+}
+
+module "deployment_group_cmportal" {
+  source                = "github.com/opsteamhub/terraform-modules//codedeploy_deployment_group"
+  name                  = var.project_name
+  app_name              = module.codedeploy_app.app_name
+  service_role_arn      = aws_iam_role.ec2_role.arn
+  deployment_group_name = var.group_name_cmportal
+  environment           = var.environment
+}
+
+module "deployment_group_webmanager" {
+  source                = "github.com/opsteamhub/terraform-modules//codedeploy_deployment_group"
+  name                  = var.project_name
+  app_name              = module.codedeploy_app.app_name
+  service_role_arn      = aws_iam_role.ec2_role.arn
+  deployment_group_name = var.group_name_webmanager
+  environment           = var.environment
+}
 ```
 
 ###### Arquivo variables.tf
