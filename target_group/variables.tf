@@ -17,3 +17,7 @@ variable "provisioned" {
 variable "path" {
   default = ""  
 }
+
+variable "health_check_protocol" {
+  default = "TCP"
+}

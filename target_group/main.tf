@@ -6,7 +6,7 @@ resource "aws_lb_target_group" "tg" {
 
   health_check {
     port     = var.port
-    protocol = var.protocol
+    protocol = var.health_check_protocol
     path     = var.path
     timeout  = 5
     interval = 10
