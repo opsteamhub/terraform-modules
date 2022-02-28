@@ -23,7 +23,7 @@ variable "health_check_protocol" {
 }
 
 variable "target_group_timeout" {
-  default = 5
+  default = ""
 }
 
 variable "target_group_interval" {
