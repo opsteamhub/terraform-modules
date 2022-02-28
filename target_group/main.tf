@@ -8,8 +8,8 @@ resource "aws_lb_target_group" "tg" {
     port     = var.port
     protocol = var.health_check_protocol
     path     = var.path
-    timeout  = 5
-    interval = 10
+    timeout  = var.target_group_timeout
+    interval = var.target_group_interval
   }
 
   tags = {

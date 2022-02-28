@@ -21,3 +21,11 @@ variable "path" {
 variable "health_check_protocol" {
   default = "HTTP"
 }
+
+variable "target_group_timeout" {
+  default = 5
+}
+
+variable "target_group_interval" {
+  default = 10 
+}
