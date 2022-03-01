@@ -1,4 +1,3 @@
-
 resource "aws_launch_configuration" "lc" {
   name_prefix          = join("-", ["lc", var.environment, var.name])
   image_id             = var.image_id
@@ -30,9 +29,9 @@ resource "aws_autoscaling_group" "asg" {
   max_size         = var.max_size
   desired_capacity = var.desired_capacity != "" ? var.desired_capacity : var.min_size
   min_size         = var.min_size
-  default_cooldown = 180
+  #default_cooldown = 180
 
-  wait_for_capacity_timeout = "10m"
+  #wait_for_capacity_timeout = "10m"
   #wait_for_elb_capacity     = var.wait_for_elb_capacity
   #min_elb_capacity          = 1
 
@@ -43,8 +42,8 @@ resource "aws_autoscaling_group" "asg" {
   target_group_arns = var.target_group_arns
   load_balancers    = var.loadbalancer
 
-  enabled_metrics     = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
-  metrics_granularity = "1Minute"
+  #enabled_metrics     = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
+  #metrics_granularity = "1Minute"
 
   #termination_policies = ["OldestInstance", "OldestLaunchConfiguration", "ClosestToNextInstanceHour", "OldestLaunchTemplate"]
 
@@ -66,9 +65,9 @@ resource "aws_autoscaling_group" "asg" {
     propagate_at_launch = true
   }
 
-  timeouts {
-    delete = "15m"
-  }
+  #timeouts {
+    #delete = "15m"
+  #}
 
   lifecycle {
     create_before_destroy = true

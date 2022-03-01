@@ -41,7 +41,7 @@ variable "desired_capacity" {
 #}
 
 variable "health_check_grace_period" {
-  default = 180
+  default = 300
 }
 
 variable "health_check_type" {
