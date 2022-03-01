@@ -13,6 +13,6 @@ variable "service_role_arn" {}
 variable "deployment_group_name" {}
 
 variable "autoscaling_groups" {
-  type = string
+  type = list(any)
   default = []
 }
