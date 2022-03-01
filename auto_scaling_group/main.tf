@@ -2,6 +2,7 @@ resource "aws_launch_configuration" "lc" {
   name_prefix          = join("-", ["lc", var.environment, var.name])
   image_id             = var.image_id
   iam_instance_profile = var.iam_instance_profile
+  user_data            = var.user_data
 
   instance_type     = var.instance_type
   enable_monitoring = "true"

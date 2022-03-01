@@ -69,3 +69,7 @@ variable "common_tags" {
 variable "provisioned" {
   default = "Terraform"
 }
+
+variable "user_data" {
+  default = ""
+}
