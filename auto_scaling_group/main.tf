@@ -33,7 +33,7 @@ resource "aws_autoscaling_group" "asg" {
   default_cooldown = 180
 
   wait_for_capacity_timeout = "10m"
-  wait_for_elb_capacity     = var.wait_for_elb_capacity
+  #wait_for_elb_capacity     = var.wait_for_elb_capacity
   #min_elb_capacity          = 1
 
   health_check_grace_period = var.health_check_grace_period

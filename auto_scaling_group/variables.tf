@@ -36,9 +36,9 @@ variable "desired_capacity" {
   default = 2
 }
 
-variable "wait_for_elb_capacity" {
-  default = 2
-}
+#variable "wait_for_elb_capacity" {
+#  default = 2
+#}
 
 variable "health_check_grace_period" {
   default = 180
