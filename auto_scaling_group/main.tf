@@ -46,7 +46,7 @@ resource "aws_autoscaling_group" "asg" {
   enabled_metrics     = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
   metrics_granularity = "1Minute"
 
-  termination_policies = ["OldestInstance", "OldestLaunchConfiguration", "ClosestToNextInstanceHour", "OldestLaunchTemplate"]
+  #termination_policies = ["OldestInstance", "OldestLaunchConfiguration", "ClosestToNextInstanceHour", "OldestLaunchTemplate"]
 
   tag {
     key                 = "Name"
