@@ -12,3 +12,6 @@ variable "service_role_arn" {}
 
 variable "deployment_group_name" {}
 
+variable "autoscaling_groups " {
+  default = "" 
+}
